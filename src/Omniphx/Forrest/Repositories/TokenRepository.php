@@ -26,7 +26,7 @@ class TokenRepository implements RepositoryInterface {
      */
     public function put($token)
     {
-        $encryptedToken = $this->encryptor->encrypt($token);
+        $encryptedToken = $token;
 
         $this->storage->put('token', $encryptedToken);
     }
@@ -42,7 +42,7 @@ class TokenRepository implements RepositoryInterface {
 
         $token = $this->storage->get('token');
 
-        return $this->encryptor->decrypt($token);
+        return $token;
     }
 
     public function has() {
